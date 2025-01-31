@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Automatización Financiera</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://checkout.bold.co/library/boldPaymentButton.js"></script>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Monta una automatización para llevar el seguimiento de tus gastos con tarjeta</h1>
+            <p class="subtitle">Aprende a crear tu propio sistema de tracking de gastos, o cualquier automatización, usando n8n, OpenAI, extrayendo datos de PDFs y WhatsApp</p>
+        </div>
+    </header>
+
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/eFgPyOA2tfs" 
+                    title="Video explicativo del taller" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section class="features">
+            <h2>Lo que aprenderás</h2>
+            <div class="features-grid" id="featuresCarousel">
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/8832/8832108.png" alt="Webhooks">
+                    <h3>Webhooks</h3>
+                    <p>Comprende cómo funcionan los webhooks y cómo utilizarlos en automatizaciones</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2885/2885417.png" alt="APIs">
+                    <h3>APIs</h3>
+                    <p>Domina el uso de APIs para conectar diferentes servicios</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1935/1935765.png" alt="Automatización">
+                    <h3>n8n</h3>
+                    <p>Aprende a usar n8n para crear flujos de trabajo automatizados</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp">
+                    <h3>WhatsApp</h3>
+                    <p>Conecta con WhatsApp para gestionar tus datos</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4616/4616809.png" alt="AI">
+                    <h3>Inteligencia Artificial</h3>
+                    <p>Aprende a integrar agentes de AI para hacer tus flujos más inteligentes</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="registration">
+            <h2>¡Inscríbete ahora!</h2>
+            <div class="event-details">
+                <div class="detail-item">
+                    <span class="icon">📅</span>
+                    <p>Dos sesiones disponibles:</p>
+                </div>
+                <div class="sessions-list"></div>
+            </div>
+            <div class="registration-container">
+                <div class="registration-form">
+                </div>
+                <div class="payment-info">
+                    <h3>Información de Pago</h3>
+                    <div class="price">$99.000 COP</div>
+                    <p class="payment-note">Pago único - Acceso al taller en vivo</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+    // Función para generar un ID único
+    function generateOrderId() {
+        // Generar un ID sin guiones ni caracteres especiales
+        return 'taller' + Date.now() + Math.random().toString(36).substr(2, 9);
+    }
+    
+    // Obtener el hash del backend
+    async function getIntegritySignature(amount, orderId) {
+        try {
+            console.log('\n=== SENDING TO SERVER ===');
+            console.log('Order ID:', orderId);
+            console.log('Amount:', amount);
+            
+            const response = await fetch(`http://127.0.0.1:5001/generate-hash/${orderId},${amount}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log('\n=== RECEIVED FROM SERVER ===');
+            console.log('Response:', data);
+            return data.signature;
+        } catch (error) {
+            console.error('Error getting integrity signature:', error);
+            return null;
+        }
+    }
+    
+    // Función para crear el botón de Bold
+    function createBoldButton() {
+        const buttonContainer = document.querySelector('.registration-form');
+        
+        const orderId = generateOrderId();
+        const amount = "9900000";
+        const redirectUrl = window.location.hostname === 'localhost' 
+            ? 'https://zava.lat/talleres/tracker-gastos.html'  // URL de producción
+            : window.location.href;  // URL actual si no es localhost
+        
+        // Generar el hash y configurar el botón
+        getIntegritySignature(amount, orderId).then((signature) => {
+            if (!signature) {
+                buttonContainer.innerHTML = '<h2>Error al cargar el botón de pago. Por favor intenta más tarde.</h2>';
+                return;
+            }
+            console.log('\n=== CREATING BOLD BUTTON ===');
+            console.log('Order ID:', orderId);
+            console.log('Amount:', amount);
+            console.log('Signature:', signature);
+            console.log('Redirect URL:', redirectUrl);
+            
+            const scriptElement = document.createElement('script');
+            scriptElement.setAttribute('data-bold-button', '');
+            scriptElement.setAttribute('data-api-key', 'ZN5Yl52wrQEeLLLyKeSlBNJNj86V8uteAaXXaAPDqCE');
+            scriptElement.setAttribute('data-amount', amount);
+            scriptElement.setAttribute('data-currency', 'COP');
+            scriptElement.setAttribute('data-order-id', orderId);
+            scriptElement.setAttribute('data-integrity-signature', signature);
+            scriptElement.setAttribute('data-description', 'Taller de Automatización de Gastos');
+            scriptElement.setAttribute('data-customer-data', JSON.stringify({
+                email: '',
+                fullName: '',
+                phone: '',
+                documentNumber: '',
+                documentType: 'CC'
+            }));
+            scriptElement.setAttribute('data-redirection-url', redirectUrl);
+            scriptElement.setAttribute('data-webhook-url', 'https://workflows.ops.sandbox.cuentamono.com/webhook-test/4b1ae722-75b3-4714-bfed-8e2b23e981ee');
+            scriptElement.setAttribute('data-render-mode', 'embedded');
+            
+            buttonContainer.innerHTML = '<h2>Regístrate al taller</h2>';
+            buttonContainer.appendChild(scriptElement);
+            console.log('Button created with attributes:', scriptElement.attributes); // Para debug
+        });
+    }
+    
+    // Inicializar el botón cuando la página cargue
+    document.addEventListener('DOMContentLoaded', () => {
+        createBoldButton();
+        loadAvailableSpots();
+    });
+
+    async function loadAvailableSpots() {
+        try {
+            const SHEET_ID = '15R-TE_3mhfHmvk-tUr1fdZOAQrhm4zFIPooqQA3YLTg';
+            const SHEET_NAME = 'Sheet2';
+            const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${SHEET_NAME}`;
+            
+            const response = await fetch(url);
+            const text = await response.text();
+            const data = JSON.parse(text.substr(47).slice(0, -2));
+            
+            // Procesar los datos
+            const sessions = {};
+            data.table.rows.forEach(row => {
+                const date = row.c[0].v;  // Columna A - fecha
+                const spots = row.c[1].v;  // Columna B - cupos
+                sessions[date] = spots;
+            });
+            
+            // Actualizar el UI
+            updateSessionsUI(sessions);
+        } catch (error) {
+            console.error('Error loading spots:', error);
+        }
+    }
+
+    function updateSessionsUI(sessions) {
+        const sessionsList = document.querySelector('.sessions-list');
+        
+        sessionsList.innerHTML = '';
+        
+        // Agregar cada sesión
+        Object.entries(sessions).forEach(([date, spots]) => {
+            // Actualizar lista de sesiones
+            const sessionItem = document.createElement('div');
+            sessionItem.className = 'session-item';
+            
+            // Determinar el día de la semana
+            let dayOfWeek;
+            if (date === '3 de febrero') dayOfWeek = 'Lunes';
+            else if (date === '4 de febrero') dayOfWeek = 'Martes';
+            else if (date === '6 de febrero') dayOfWeek = 'Jueves';
+            
+            sessionItem.innerHTML = `
+                <span>${dayOfWeek} ${date} - 6:00 PM</span>
+                <span class="${spots > 0 ? 'session-available' : 'session-full'}">
+                    (${spots > 0 ? `${spots} cupos disponibles` : 'Cupos agotados'})
+                </span>
+            `;
+            sessionsList.appendChild(sessionItem);
+        });
+    }
+    </script>
+</body>
+</html> 
