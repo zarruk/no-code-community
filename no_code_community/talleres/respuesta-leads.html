@@ -80,8 +80,8 @@
     }
 
     .logo-image {
-        width: 32px;
-        height: 32px;
+        width: auto;
+        height: 120px;
     }
 
     @media (max-width: 1024px) {
@@ -107,6 +107,12 @@
             width: 100%;
         }
     }
+
+    @media (max-width: 768px) {
+        .logo-image {
+            height: 80px;
+        }
+    }
     </style>
 </head>
 <body>
@@ -114,8 +120,7 @@
         <nav class="navbar">
             <div class="container">
                 <a href="/" class="logo">
-                    <img src="../assets/images/logo.png" alt="No Code Community Logo" class="logo-image">
-                    <span class="logo-text">No Code Community</span>
+                    <img src="../assets/images/logo-new.png" alt="Aztec" class="logo-image">
                 </a>
                 <a href="/" class="back-button">← <span>Volver al inicio</span></a>
             </div>
