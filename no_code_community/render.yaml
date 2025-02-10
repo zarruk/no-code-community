@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: aztec
+    env: static
+    buildCommand: echo "Static site, no build needed"
+    staticPublishPath: .
+    domains:
+      - aztec.co
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html 
