@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Automatizado de Respuesta a Leads - No Code Community</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <style>
+    .features-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: var(--spacing-4);
+        padding: var(--spacing-4) 0;
+        align-items: stretch;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    .feature-card {
+        flex: 0 0 220px;
+        width: 220px;
+        min-height: 280px; /* Altura fija mínima para todas las tarjetas */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--spacing-4);
+        border-radius: 8px;
+        background: var(--color-white);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        justify-content: flex-start;
+    }
+
+    .feature-card img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain; /* Cambiado a contain para mantener proporción */
+        margin-bottom: var(--spacing-3);
+    }
+
+    .feature-card h3 {
+        margin: var(--spacing-2) 0;
+        font-size: 1.1rem;
+        min-height: 40px; /* Altura fija para títulos */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .feature-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--color-gray-600);
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        min-height: 60px; /* Altura fija para descripciones */
+    }
+
+    .back-button {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-2);
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-2);
+        text-decoration: none;
+    }
+
+    .logo-text {
+        display: block !important; /* Forzar que siempre sea visible */
+    }
+
+    .logo-image {
+        width: 32px;
+        height: 32px;
+    }
+
+    @media (max-width: 1024px) {
+        .features-grid {
+            justify-content: flex-start;
+            overflow-x: auto;
+            padding-left: var(--spacing-4);
+            padding-right: var(--spacing-4);
+        }
+
+        .back-button span {
+            display: none;
+        }
+
+        /* Asegurar que el logo y texto permanezcan visibles */
+        .logo, .logo-text {
+            display: flex !important;
+        }
+
+        /* Ajustar el contenedor del navbar si es necesario */
+        .navbar .container {
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <nav class="navbar">
+            <div class="container">
+                <a href="/" class="logo">
+                    <img src="../assets/images/logo.png" alt="No Code Community Logo" class="logo-image">
+                    <span class="logo-text">No Code Community</span>
+                </a>
+                <a href="/" class="back-button">← <span>Volver al inicio</span></a>
+            </div>
+        </nav>
+        
+        <div class="hero-content container">
+            <div class="hero-text">
+                <span class="workshop-tag">Taller Práctico</span>
+                <h1>Sistema Automatizado de Respuesta a Leads</h1>
+                <p class="hero-subtitle">Cuando tu cliente llene un formulario online, recibirá seguimiento inmediato por correo y sus datos quedarán registrados en un Sheets</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="price-banner">
+        <div class="container">
+            <div class="price-tag">
+                <span class="price-cop">COP $99.000</span>
+                <span class="price-divider">/</span>
+                <span class="price-usd">USD $23.5</span>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="workshop-details">
+            <div class="container">
+                <div class="video-wrapper">
+                    <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="https://www.youtube.com/embed/V0oulVcsADU" 
+                        title="Video explicativo del taller" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPPCuPJYuQKZ1hOd_7SEK4X9Q72TOR2gHxqg&s" alt="Make">
+                        <h3>Make (Integromat)</h3>
+                        <p>Domina la plataforma líder en automatización sin código</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991147.png" alt="Google Sheets">
+                        <h3>Google Sheets</h3>
+                        <p>Integra y organiza tus leads automáticamente en hojas de cálculo</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2885/2885417.png" alt="APIs">
+                        <h3>APIs</h3>
+                        <p>Entiende qué es una API e intégrala al flujo</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="https://www.infobae.com/resizer/v2/AGX2ONRL5RGC3MQCAOOJ2YWOHM.jpg?auth=212a997ff6aa1521005dc0550cb9501bcdae409319ecafb41d700e9b05dcd4ce&smart=true&width=350&height=350&quality=85" alt="OpenAI">
+                        <h3>OpenAI</h3>
+                        <p>Procesa y clasifica tus leads automáticamente con inteligencia artificial</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="registration">
+            <div class="container">
+                <div class="section-header">
+                    <h2>¡Inscríbete ahora!</h2>
+                    <p>Cupos limitados para una mejor experiencia de aprendizaje</p>
+                </div>
+
+                <div class="sessions-grid">
+                    <!-- Las sesiones se cargarán dinámicamente aquí -->
+                </div>
+
+                <!-- Agregar contenedor de lista de espera -->
+                <div class="waitlist-container" style="text-align: center; margin-top: var(--spacing-8);">
+                    <button class="waitlist-button" onclick="showWaitlistForm()">
+                        Unirme a lista de espera
+                    </button>
+                </div>
+
+                <!-- Agregar formulario de lista de espera -->
+                <div class="waitlist-form" id="waitlist-form">
+                    <h3>Lista de espera - Sistema de Respuesta a Leads</h3>
+                    <div class="form-group">
+                        <label for="waitlist-name">Nombre completo</label>
+                        <input type="text" id="waitlist-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="waitlist-email">Correo electrónico</label>
+                        <input type="email" id="waitlist-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="waitlist-phone">Teléfono</label>
+                        <input type="tel" id="waitlist-phone" required>
+                    </div>
+                    <button class="button button-primary" onclick="submitWaitlist()">
+                        Registrarme en lista de espera
+                    </button>
+                    <div class="waitlist-success" id="waitlist-success">
+                        ¡Te has registrado exitosamente en la lista de espera!
+                    </div>
+                </div>
+
+                <!-- Agregar formulario de datos de usuario -->
+                <div class="user-data-form">
+                    <div class="form-group">
+                        <label for="fullName">Nombre completo</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <button class="button button-primary" onclick="submitRegistration()">
+                        Registrarme al taller
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 No Code Community. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+    // Declarar las variables globalmente al inicio del script
+    let selectedDate = '';
+    let userData = {
+        fullName: '',
+        email: '',
+        phone: ''
+    };
+    let phoneInput;
+    let registrationPhoneInput;
+
+    async function loadSessions() {
+        try {
+            const SHEET_ID = '15R-TE_3mhfHmvk-tUr1fdZOAQrhm4zFIPooqQA3YLTg';
+            const SHEET_GID = '2040243535'; // Este es el gid del Sheet3
+            const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET_GID}`;
+            
+            const response = await fetch(url);
+            const text = await response.text();
+            const rows = text.split('\n').slice(1); // Ignorar la primera fila (headers)
+            
+            const sessionsGrid = document.querySelector('.sessions-grid');
+            sessionsGrid.innerHTML = ''; // Limpiar sesiones existentes
+            
+            rows.forEach((row, index) => {
+                if (!row.trim()) return; // Ignorar filas vacías
+                
+                const [fecha, cuposRestantes, cupoTotal] = row.split(',');
+                const cupos = Math.max(0, parseInt(cuposRestantes)); // Si es negativo, mostrar 0
+                const dia = getDayOfWeek(fecha.trim());
+                
+                const sessionHTML = `
+                    <div class="session-card ${cupos === 0 ? 'disabled' : ''}">
+                        <input type="radio" name="session" value="${fecha.trim()}" 
+                               id="session${index + 1}" ${cupos === 0 ? 'disabled' : ''}>
+                        <label for="session${index + 1}">
+                            <div class="session-date">
+                                <span class="day">${dia}</span>
+                                <span class="date">${fecha.trim()}</span>
+                                <span class="time">6:00 PM</span>
+                            </div>
+                            <div class="session-spots">
+                                <span class="spots-available">
+                                    ${cupos === 0 ? 'No hay cupos disponibles' : `${cupos} cupos disponibles`}
+                                </span>
+                            </div>
+                        </label>
+                    </div>
+                `;
+                sessionsGrid.innerHTML += sessionHTML;
+            });
+            
+            initializeSessionListeners();
+        } catch (error) {
+            console.error('Error cargando las sesiones:', error);
+        }
+    }
+
+    function getDayOfWeek(dateStr) {
+        const [dia, mes] = dateStr.split(' de ');
+        const year = new Date().getFullYear();
+        const date = new Date(`${mes} ${dia}, ${year}`);
+        const days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        return days[date.getDay()];
+    }
+
+    function initializeSessionListeners() {
+        document.querySelectorAll('.session-card input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.querySelectorAll('.session-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                
+                if (!e.target.disabled) {
+                    e.target.closest('.session-card').classList.add('selected');
+                    selectedDate = e.target.value;
+                    document.querySelector('.user-data-form').style.display = 'block';
+                    
+                    // Limpiar campos y objeto userData al seleccionar nueva sesión
+                    document.getElementById('fullName').value = '';
+                    document.getElementById('email').value = '';
+                    registrationPhoneInput.setNumber('');
+                    userData = {
+                        fullName: '',
+                        email: '',
+                        phone: ''
+                    };
+                }
+            });
+        });
+    }
+
+    function showWaitlistForm() {
+        document.getElementById('waitlist-form').style.display = 'block';
+    }
+
+    async function submitWaitlist() {
+        const nameInput = document.getElementById('waitlist-name');
+        const emailInput = document.getElementById('waitlist-email');
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.getNumber();
+        
+        if (!name || !email || !phoneInput.isValidNumber()) {
+            alert('Por favor completa todos los campos correctamente');
+            return;
+        }
+        
+        // Validación básica de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Por favor ingresa un correo electrónico válido');
+            return;
+        }
+        
+        try {
+            const response = await fetch('https://workflows.ops.sandbox.cuentamono.com/webhook/a466287a-5bad-45a2-a2fa-dd768a6319bf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    registrationDate: new Date().toISOString(),
+                    source: 'waitlist-leads' // Cambiado para diferenciar del otro taller
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Error en el envío');
+            }
+
+            const successMessage = document.getElementById('waitlist-success');
+            successMessage.style.display = 'block';
+            
+            // Limpiar campos
+            nameInput.value = '';
+            emailInput.value = '';
+            phoneInput.setNumber('');
+            
+            // Ocultar el formulario después de un tiempo
+            setTimeout(() => {
+                document.getElementById('waitlist-form').style.display = 'none';
+                successMessage.style.display = 'none';
+            }, 3000);
+            
+        } catch (error) {
+            console.error('Error al registrar en lista de espera:', error);
+            alert('Hubo un error al registrarte en la lista de espera. Por favor intenta nuevamente.');
+        }
+    }
+
+    // Mover los event listeners dentro del DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+        // Inicializar teléfonos
+        const waitlistPhoneField = document.querySelector("#waitlist-phone");
+        phoneInput = window.intlTelInput(waitlistPhoneField, {
+            preferredCountries: ["co"],
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
+        const registrationPhoneField = document.querySelector("#phone");
+        registrationPhoneInput = window.intlTelInput(registrationPhoneField, {
+            preferredCountries: ["co"],
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+
+        // Agregar event listeners para los inputs
+        document.querySelectorAll('.user-data-form input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                userData[e.target.id] = e.target.value.trim();
+                console.log('userData actualizado:', userData); // Para debugging
+            });
+        });
+
+        loadSessions();
+    });
+
+    async function submitRegistration() {
+        try {
+            console.log('Iniciando registro con datos:', { 
+                userData, 
+                selectedDate, 
+                phone: registrationPhoneInput?.getNumber() 
+            });
+
+            // Verificar que registrationPhoneInput esté inicializado
+            if (!registrationPhoneInput) {
+                throw new Error('Error: El campo de teléfono no está inicializado correctamente');
+            }
+
+            // Validar que todos los campos estén llenos
+            if (!userData.fullName || !userData.email || !registrationPhoneInput.isValidNumber()) {
+                alert('Por favor completa todos los campos correctamente');
+                return;
+            }
+            
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userData.email)) {
+                alert('Por favor ingresa un correo electrónico válido');
+                return;
+            }
+
+            // Validar que se haya seleccionado una fecha
+            if (!selectedDate) {
+                alert('Por favor selecciona una sesión');
+                return;
+            }
+
+            const dataToSend = {
+                name: userData.fullName,
+                email: userData.email,
+                phone: registrationPhoneInput.getNumber(),
+                registrationDate: new Date().toISOString(),
+                selectedSession: selectedDate,
+                source: 'registration-leads'
+            };
+
+            console.log('Enviando datos:', dataToSend);
+
+            const response = await fetch('https://workflows.ops.sandbox.cuentamono.com/webhook/a466287a-5bad-45a2-a2fa-dd768a6319bf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend)
+            });
+
+            const responseData = await response.json(); // Para ver la respuesta del servidor
+            console.log('Respuesta del servidor:', responseData);
+
+            if (!response.ok) {
+                throw new Error(`Error en el envío: ${response.status} ${response.statusText}`);
+            }
+
+            alert('¡Registro exitoso! Te contactaremos pronto con los detalles del pago.');
+            
+            // Limpiar campos y objeto userData
+            document.getElementById('fullName').value = '';
+            document.getElementById('email').value = '';
+            registrationPhoneInput.setNumber('');
+            userData = {
+                fullName: '',
+                email: '',
+                phone: ''
+            };
+            
+            // Ocultar formularios
+            document.querySelector('.user-data-form').style.display = 'none';
+            
+        } catch (error) {
+            console.error('Error detallado al registrarse:', error);
+            alert('Hubo un error al procesar tu registro. Por favor intenta nuevamente.');
+        }
+    }
+    </script>
+</body>
+</html> 

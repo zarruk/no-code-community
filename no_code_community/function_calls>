@@ -1,0 +1,4 @@
+<invoke name="list_dir">
+<parameter name="explanation">Explorar la estructura completa del proyecto para identificar posibles problemas de organización</parameter>
+<parameter name="relative_workspace_path">.</parameter>
+</invoke> 
